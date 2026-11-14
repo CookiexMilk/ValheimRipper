@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Valheim Ripper</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="window" id="window">
+		<div class="head" id="drag">
+			<div class="crest"><svg class="icon"><use href="#i-axe"/></svg></div>
+			<div class="titles">
+				<span class="title">Valheim Ripper</span>
+				<span class="subtitle">Rips Valheim into a Unity project</span>
+			</div>
+			<div class="tools">
+				<button class="tool" id="theme-button" title="Theme"><svg class="icon"><use href="#i-palette"/></svg></button>
+				<button class="tool" data-window="min" title="Minimise"><svg class="icon"><use href="#i-minus"/></svg></button>
+				<button class="tool tool-close" data-window="close" title="Close"><svg class="icon"><use href="#i-x"/></svg></button>
+			</div>
+		</div>
+		<div class="rule"></div>
+
+		<div class="body">
+			<div class="rail">
+				<div class="group">
+					<div class="group-head"><span class="group-gem"></span><span class="group-name">Found on this PC</span></div>
+					<div id="found"></div>
+				</div>
+				<div class="group">
+					<div class="group-head"><span class="group-gem"></span><span class="group-name">New project</span></div>
+					<div class="where">
+						<span class="where-path" id="project-path"><bdi>Pick a folder</bdi></span>
+						<button class="where-browse" id="project-browse"><svg class="icon"><use href="#i-folder"/></svg>Change</button>
+					</div>
+					<div class="where-note" id="project-note">An empty folder. Needs about 20 GB.</div>
+				</div>
+				<div class="group">
+					<div class="group-head"><span class="group-gem"></span><span class="group-name">Options</span></div>
+					<div id="options"></div>
+				</div>
+			</div>
+
+			<div class="main">
+				<div class="stages" id="stages"></div>
+				<div class="dock">
+					<div class="overall-row" id="overall-row">
+						<div class="overall"><div class="overall-fill" id="overall"></div></div>
+						<div class="overall-label"><span id="overall-text"></span><span class="overall-count" id="overall-count"></span></div>
+					</div>
+					<div class="dock-buttons">
+						<button class="primary" id="go"><svg class="icon"><use href="#i-play"/></svg><span id="go-text">Rip it</span></button>
+						<button class="ghost" id="log-button"><svg class="icon"><use href="#i-terminal"/></svg>Log</button>
+					</div>
+				</div>
+			</div>
+			<div class="drawer" id="drawer">
+				<div class="drawer-head">
+					<span class="group-gem"></span><span class="drawer-title">Log</span>
+					
+					<button class="tool" id="drawer-file" title="Open the log folder"><svg class="icon"><use href="#i-folder"/></svg></button>
+					<button class="tool" id="drawer-close" title="Close"><svg class="icon"><use href="#i-x"/></svg></button>
+				</div>
+				<div class="log" id="log"></div>
+			</div>
+		</div>
+
+		<div class="foot">
+			<span></span>
+			<span class="credit">🍪🥛</span>
+			<span class="foot-right">
+				<span id="version">ValheimRipper</span>
+				<span class="links">
+					<button data-link="guide">Guide</button>
+					<button data-link="github">GitHub</button>
+					<button data-link="website">Website</button>
+					<button data-link="discord">Discord</button>
+					<button data-link="paypal">PayPal</button>
+					<button data-link="coffee">Buy Me a Coffee</button>
+				</span>
+			</span>
+		</div>
+
+		<div class="popover" id="themes"></div>
+
+		<div class="tip" id="tip"><div class="tip-title" id="tip-title"></div><div class="tip-text" id="tip-text"></div></div>
+
+		<div class="result" id="result">
+			<div class="result-card">
+				<div class="result-title" id="result-title">Done</div>
+				<div class="result-text" id="result-text"></div>
+				<div class="result-facts" id="result-facts"></div>
+				<div class="result-actions">
+					<button class="ghost" data-open="folder"><svg class="icon"><use href="#i-folder"/></svg>Open folder</button>
+					<button class="ghost" data-open="log"><svg class="icon"><use href="#i-terminal"/></svg>Logs</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<svg width="0" height="0" style="position:absolute">
+		<symbol id="i-axe" viewBox="0 0 24 24"><path d="m14 12-8.381 8.38a1 1 0 0 1-3.001-3L11 9"/><path d="M15 15.5a.5.5 0 0 0 .5.5A6.5 6.5 0 0 0 22 9.5a.5.5 0 0 0-.5-.5h-1.672a2 2 0 0 1-1.414-.586l-5.062-5.062a1.205 1.205 0 0 0-1.704 0L9.352 5.648a1.205 1.205 0 0 0 0 1.704l5.062 5.062A2 2 0 0 1 15 13.828z"/></symbol>
+		<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+		<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+		<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+		<symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+		<symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+		<symbol id="i-play" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></symbol>
+		<symbol id="i-folder" viewBox="0 0 24 24"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></symbol>
+		<symbol id="i-terminal" viewBox="0 0 24 24"><path d="m7 11 2-2-2-2"/><path d="M11 13h4"/><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/></symbol>
+		<symbol id="i-loader" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></symbol>
+		<symbol id="i-dash" viewBox="0 0 24 24"><path d="M10.1 2.182a10 10 0 0 1 3.8 0"/><path d="M13.9 21.818a10 10 0 0 1-3.8 0"/><path d="M17.609 3.721a10 10 0 0 1 2.69 2.7"/><path d="M2.182 13.9a10 10 0 0 1 0-3.8"/><path d="M20.279 17.609a10 10 0 0 1-2.7 2.69"/><path d="M21.818 10.1a10 10 0 0 1 0 3.8"/><path d="M3.721 6.391a10 10 0 0 1 2.7-2.69"/><path d="M6.391 20.279a10 10 0 0 1-2.69-2.7"/></symbol>
+		<symbol id="i-skip" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+		<symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></symbol>
+	</svg>
+	<script src="app.js"></script>
+</body>
+</html>
