@@ -17,7 +17,7 @@ There's also **ValheimRipper-dotnet.zip**. It's way smaller, but you need the
 - Windows 10 or 11 (64-bit) with [WebView2](https://developer.microsoft.com/microsoft-edge/webview2/) (Windows 11
   already has it)
 - [Valheim](https://store.steampowered.com/app/892970/Valheim/)
-- [Unity 6000.0.75f1](https://unity.com/releases/editor/whats-new/6000.0.75f1)
+- [Unity 6000.0.85f2](https://unity.com/releases/editor/whats-new/6000.0.85f2)
 - [AssetRipper](https://github.com/AssetRipper/AssetRipper) 2.x
 - [Git](https://git-scm.com/downloads/win) (optional, for the AssetBundle Browser)
 
